@@ -7,6 +7,9 @@ module.exports = {
         'sans' : ['Ubuntu', ...defaultTheme.fontFamily.sans],
       }
     },
+    backgroundImage: {
+      'sidebar': "url('../public/assets/bg-sidebar-desktop.svg')",
+    }
   },
   plugins: [],
 }
