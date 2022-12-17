@@ -21,7 +21,7 @@ function SelectPlan({view, setView, setBilling, billing, plan, setPlan} : any) {
                 </p>
             </div>
             <div className="w-full h-1/3 flex space-x-8">
-                <div onClick={e => setPlan("arcade")} className={`w-full border ${plan === "arcade" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
+                <div onClick={e => setPlan({...plan, plan : 'arcade', cost : ['$9/mo', '$90/y']})} className={`w-full border ${plan.plan === "arcade" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
                     <img
                         src={"../assets/icon-arcade.svg"}
                         className="w-12 h-12 ml-6 mt-6"
@@ -43,7 +43,7 @@ function SelectPlan({view, setView, setBilling, billing, plan, setPlan} : any) {
                         }
                     </div>
                 </div>
-                <div onClick={e => setPlan("advanced")} className={`w-full border ${plan === "advanced" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
+                <div onClick={e => setPlan({...plan, plan : 'advanced', cost : ['$12/mo', '$120/y']})} className={`w-full border ${plan.plan === "advanced" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
                     <img
                         src={"../assets/icon-advanced.svg"}
                         className="w-12 h-12 ml-6 mt-6"
@@ -65,7 +65,7 @@ function SelectPlan({view, setView, setBilling, billing, plan, setPlan} : any) {
                         }
                     </div>
                 </div>
-                <div onClick={e => setPlan("pro")} className={`w-full border ${plan === "pro" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
+                <div onClick={e => setPlan({...plan, plan : 'pro', cost : ['$15/mo', '$150/y']})} className={`w-full border ${plan.plan === "pro" ? "border-indigo-400" : "border-gray-300"} rounded-lg`}>
                     <img
                         src={"../assets/icon-pro.svg"}
                         className="w-12 h-12 ml-6 mt-6"

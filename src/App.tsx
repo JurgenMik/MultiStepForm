@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from "./components/SelectPlan";
+import AddOns from "./components/AddOns";
 import {info} from './Interfaces/PersonalInfo';
 
 function App() {
@@ -16,8 +17,11 @@ function App() {
         email: '',
         phone_nb: 0
     })
+    const [plan, setPlan] = useState<object>({
+        plan: '',
+        cost: []
+    });
     const [billing, setBilling] = useState<string>();
-    const [plan, setPlan] = useState<string>();
 
   return (
     <div className="w-full h-screen overflow-y-hidden">
@@ -89,6 +93,7 @@ function App() {
             <div className="w-3/4 h-full">
                 {view.personalInfo ? <PersonalInfo personalDetails={personalDetails} setDetails={setDetails} setView={setView} view={view} /> : null}
                 {view.selectPlan ? <SelectPlan view={view} setView={setView} setBilling={setBilling} billing={billing} plan={plan} setPlan={setPlan} /> : null}
+                {view.add_ons ? <AddOns /> : null}
             </div>
         </div>
     </div>
