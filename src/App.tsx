@@ -19,7 +19,8 @@ function App() {
     })
     const [plan, setPlan] = useState<object>({
         plan: '',
-        cost: []
+        cost: [],
+        add_ons: []
     });
     const [billing, setBilling] = useState<string>();
 
@@ -93,7 +94,7 @@ function App() {
             <div className="w-3/4 h-full">
                 {view.personalInfo ? <PersonalInfo personalDetails={personalDetails} setDetails={setDetails} setView={setView} view={view} /> : null}
                 {view.selectPlan ? <SelectPlan view={view} setView={setView} setBilling={setBilling} billing={billing} plan={plan} setPlan={setPlan} /> : null}
-                {view.add_ons ? <AddOns /> : null}
+                {view.add_ons ? <AddOns view={view} setView={setView} billing={billing} plan={plan} setPlan={setPlan} /> : null}
             </div>
         </div>
     </div>
