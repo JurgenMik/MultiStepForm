@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from "./components/SelectPlan";
 import AddOns from "./components/AddOns";
+import Summary from "./components/Summary";
 import {info} from './Interfaces/PersonalInfo';
+import {plan} from "./Interfaces/Plan";
 
 function App() {
 
@@ -17,7 +19,7 @@ function App() {
         email: '',
         phone_nb: 0
     })
-    const [plan, setPlan] = useState<object>({
+    const [plan, setPlan] = useState<plan>({
         plan: '',
         cost: [],
         add_ons: []
@@ -95,6 +97,7 @@ function App() {
                 {view.personalInfo ? <PersonalInfo personalDetails={personalDetails} setDetails={setDetails} setView={setView} view={view} /> : null}
                 {view.selectPlan ? <SelectPlan view={view} setView={setView} setBilling={setBilling} billing={billing} plan={plan} setPlan={setPlan} /> : null}
                 {view.add_ons ? <AddOns view={view} setView={setView} billing={billing} plan={plan} setPlan={setPlan} /> : null}
+                {view.summary ? <Summary plan={plan} billing={billing} view={view} setView={setView} /> : null}
             </div>
         </div>
     </div>
