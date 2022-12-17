@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PersonalInfo from './components/PersonalInfo';
+import SelectPlan from "./components/SelectPlan";
 import {info} from './Interfaces/PersonalInfo';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
         email: '',
         phone_nb: 0
     })
+    const [billing, setBilling] = useState<string>();
+    const [plan, setPlan] = useState<string>();
 
   return (
     <div className="w-full h-screen overflow-y-hidden">
@@ -23,7 +26,7 @@ function App() {
                 <div className="w-11/12 h-full mr-auto ml-auto rounded-xl bg-sidebar bg-cover pl-2 flex flex-col">
                     <div className="w-full h-16 mt-4 flex space-x-4">
                         <div className="w-1/4 h-full flex justify-end items-center">
-                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.personalInfo ? "border-0 bg-cyan-400" : "border border-white"} font-bold`}>
+                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.personalInfo ? "border-0 bg-cyan-400" : "border border-white text-white"} font-bold`}>
                                 <p>1</p>
                             </span>
                         </div>
@@ -38,7 +41,7 @@ function App() {
                     </div>
                     <div className="w-full h-16 mt-4 flex space-x-4">
                         <div className="w-1/4 h-full flex justify-end items-center">
-                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.selectPlan ? "border-0 bg-cyan-400" : "border border-white"} font-bold`}>
+                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.selectPlan ? "border-0 bg-cyan-400" : "border border-white text-white"} font-bold`}>
                                 <p>2</p>
                             </span>
                         </div>
@@ -53,7 +56,7 @@ function App() {
                     </div>
                     <div className="w-full h-16 mt-4 flex space-x-4">
                         <div className="w-1/4 h-full flex justify-end items-center">
-                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.add_ons ? "border-0 bg-cyan-400" : "border border-white"} font-bold`}>
+                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.add_ons ? "border-0 bg-cyan-400" : "border border-white text-white"} font-bold`}>
                                 <p>3</p>
                             </span>
                         </div>
@@ -68,7 +71,7 @@ function App() {
                     </div>
                     <div className="w-full h-16 mt-4 flex space-x-4">
                         <div className="w-1/4 h-full flex justify-end items-center">
-                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.summary ? "border-0 bg-cyan-400" : "border border-white"} font-bold`}>
+                            <span className={`w-10 h-10 rounded-full flex justify-center items-center ${view.summary ? "border-0 bg-cyan-400" : "border border-white text-white"} font-bold`}>
                                 <p>4</p>
                             </span>
                         </div>
@@ -85,6 +88,7 @@ function App() {
             </div>
             <div className="w-3/4 h-full">
                 {view.personalInfo ? <PersonalInfo personalDetails={personalDetails} setDetails={setDetails} setView={setView} view={view} /> : null}
+                {view.selectPlan ? <SelectPlan view={view} setView={setView} setBilling={setBilling} billing={billing} plan={plan} setPlan={setPlan} /> : null}
             </div>
         </div>
     </div>
