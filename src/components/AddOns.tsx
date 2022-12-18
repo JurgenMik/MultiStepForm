@@ -10,25 +10,23 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
 
     const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setSelected({...selected, [e.target.name] : true});
-    }
 
-    const handleAddOns = () => {
         if (selected.service) {
             let addition = [...plan.add_ons];
 
-            addition.push({selected: 'Online Service', price: ['$1/mo, $10/y']});
+            addition.push({selected: 'Online Service', price: {yearly: 10, monthly: 1}});
             setPlan({...plan, add_ons : addition});
         }
         if (selected.storage) {
             let addition = [...plan.add_ons];
 
-            addition.push({selected: 'Larger Storage', price: ['$2/mo, $20/y']});
+            addition.push({selected: 'Larger Storage', price: {yearly: 20, monthly: 2}});
             setPlan({...plan, add_ons : addition});
         }
         if (selected.custom) {
             let addition = [...plan.add_ons];
 
-            addition.push({selected: 'Custom Profile', price: ['$2/mo, $20/y']});
+            addition.push({selected: 'Custom Profile', price: {yearly: 20, monthly: 2}});
             setPlan({...plan, add_ons : addition});
         }
     }
@@ -59,7 +57,6 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             name="service"
                             className="h-5 w-5 focus:ring-0"
                             onChange={handleCheckBoxChange}
-                            onClick={handleAddOns}
                         />
                     </div>
                     <div className="w-3/5 h-full flex flex-col justify-center space-y-2">
@@ -81,7 +78,6 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             name="storage"
                             className="h-5 w-5 focus:ring-0"
                             onChange={handleCheckBoxChange}
-                            onClick={handleAddOns}
                         />
                     </div>
                     <div className="w-3/5 h-full flex flex-col justify-center space-y-2">
@@ -103,7 +99,6 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             name="custom"
                             className="h-5 w-5 focus:ring-0"
                             onChange={handleCheckBoxChange}
-                            onClick={handleAddOns}
                         />
                     </div>
                     <div className="w-3/5 h-full flex flex-col justify-center">

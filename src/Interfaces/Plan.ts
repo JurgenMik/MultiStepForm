@@ -5,6 +5,6 @@ export interface plan {
     }>
     add_ons: Array<{
         selected: string,
-        price: []
+        price: object
     }>
 }

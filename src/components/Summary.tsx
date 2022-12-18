@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Confirmation from "./Confirmation";
 
-
 function Summary({plan, billing, view, setView} : any) {
 
     const [confirm, setConfirm] = useState<boolean>(false);
@@ -56,10 +55,10 @@ function Summary({plan, billing, view, setView} : any) {
                                                 {selected.selected}
                                             </h1>
                                         </div>
-                                        <div className="w-1/5">
-                                            <p className="text-sky-900">
-                                                +{selected.price}
-                                            </p>
+                                        <div className="w-1/5 text-sky-900">
+                                            {billing === 'monthly' ? <p>+${selected.price.monthly}/mo</p> :
+                                                <p>+${selected.price.yearly}/y</p>
+                                            }
                                         </div>
                                     </div>
                                 );
