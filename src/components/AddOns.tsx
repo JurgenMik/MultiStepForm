@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 function AddOns({view, setView, billing, plan, setPlan} : any) {
 
@@ -8,9 +8,7 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
         custom: false
     })
 
-    const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-        setSelected({...selected, [e.target.name] : true});
-
+    useEffect(() => {
         if (selected.service) {
             let addition = [...plan.add_ons];
 
@@ -29,6 +27,10 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
             addition.push({selected: 'Custom Profile', price: {yearly: 20, monthly: 2}});
             setPlan({...plan, add_ons : addition});
         }
+    }, [selected])
+
+    const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setSelected({...selected, [e.target.name] : true});
     }
 
     const handleBack = () => {
@@ -56,6 +58,7 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             type="checkbox"
                             name="service"
                             className="h-5 w-5 focus:ring-0"
+                            checked={selected.service}
                             onChange={handleCheckBoxChange}
                         />
                     </div>
@@ -77,6 +80,7 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             type="checkbox"
                             name="storage"
                             className="h-5 w-5 focus:ring-0"
+                            checked={selected.storage}
                             onChange={handleCheckBoxChange}
                         />
                     </div>
@@ -98,6 +102,7 @@ function AddOns({view, setView, billing, plan, setPlan} : any) {
                             type="checkbox"
                             name="custom"
                             className="h-5 w-5 focus:ring-0"
+                            checked={selected.custom}
                             onChange={handleCheckBoxChange}
                         />
                     </div>
