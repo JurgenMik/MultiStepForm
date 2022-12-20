@@ -24,6 +24,11 @@ function App() {
         cost: [],
         add_ons: []
     });
+    const [selected, setSelected] = useState({
+        service: false,
+        storage: false,
+        custom: false
+    })
     const [billing, setBilling] = useState<string>();
 
   return (
@@ -96,7 +101,7 @@ function App() {
             <div className="w-3/4 h-full">
                 {view.personalInfo ? <PersonalInfo personalDetails={personalDetails} setDetails={setDetails} setView={setView} view={view} /> : null}
                 {view.selectPlan ? <SelectPlan view={view} setView={setView} setBilling={setBilling} billing={billing} plan={plan} setPlan={setPlan} /> : null}
-                {view.add_ons ? <AddOns view={view} setView={setView} billing={billing} plan={plan} setPlan={setPlan} /> : null}
+                {view.add_ons ? <AddOns view={view} setView={setView} billing={billing} plan={plan} setPlan={setPlan} selected={selected} setSelected={setSelected} /> : null}
                 {view.summary ? <Summary plan={plan} billing={billing} view={view} setView={setView} /> : null}
             </div>
         </div>

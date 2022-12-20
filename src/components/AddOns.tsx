@@ -1,33 +1,31 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect} from 'react';
 
-function AddOns({view, setView, billing, plan, setPlan} : any) {
-
-    const [selected, setSelected] = useState({
-        service: false,
-        storage: false,
-        custom: false
-    })
+function AddOns({view, setView, billing, plan, setPlan, selected, setSelected} : any) {
 
     useEffect(() => {
         if (selected.service) {
-            let addition = [...plan.add_ons];
+            let addition = {selected: 'Online Service', price: {yearly: 10, monthly: 1}}
 
-            addition.push({selected: 'Online Service', price: {yearly: 10, monthly: 1}});
-            setPlan({...plan, add_ons : addition});
+            handleAdditions(addition);
         }
         if (selected.storage) {
-            let addition = [...plan.add_ons];
+            let addition = {selected: 'Larger Storage', price: {yearly: 20, monthly: 2}}
 
-            addition.push({selected: 'Larger Storage', price: {yearly: 20, monthly: 2}});
-            setPlan({...plan, add_ons : addition});
+            handleAdditions(addition);
         }
         if (selected.custom) {
-            let addition = [...plan.add_ons];
+            let addition = {selected: 'Custom Profile', price: {yearly: 20, monthly: 2}}
 
-            addition.push({selected: 'Custom Profile', price: {yearly: 20, monthly: 2}});
-            setPlan({...plan, add_ons : addition});
+            handleAdditions(addition);
         }
     }, [selected])
+
+    const handleAdditions = (selected : any) => {
+        let addition = [...plan.add_ons];
+
+        addition.push(selected);
+        setPlan({...plan, add_ons : addition});
+    }
 
     const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setSelected({...selected, [e.target.name] : true});
