@@ -28,7 +28,7 @@ function AddOns({view, setView, billing, plan, setPlan, selected, setSelected} :
     }
 
     const handleCheckBoxChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-        setSelected({...selected, [e.target.name] : true});
+        setSelected({...selected, [e.target.name] : e.target.checked});
     }
 
     const handleBack = () => {
